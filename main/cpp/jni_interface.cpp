@@ -28,7 +28,7 @@ JNIEXPORT void JNI_OnUnload(JavaVM *vm, void *reserved) {
  ********************************************************************************************/
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_dsm_mobiledetect_NanoDet_init(JNIEnv *env, jclass, jobject assetManager, jboolean useGPU) {
+Java_com_dsm_mobiledetect_NanoDet_init(JNIEnv *env, jobject thiz, jobject assetManager, jboolean useGPU) {
     if (NanoDet::detector == nullptr) {
         AAssetManager *mgr = AAssetManager_fromJava(env, assetManager);
         NanoDet::detector = new NanoDet(mgr, "nanodet_m.param", "nanodet_m.bin", useGPU);
@@ -36,7 +36,7 @@ Java_com_dsm_mobiledetect_NanoDet_init(JNIEnv *env, jclass, jobject assetManager
 }
 
 extern "C" JNIEXPORT jobjectArray JNICALL
-Java_com_dsm_mobiledetect_NanoDet_detect(JNIEnv *env, jclass, jobject image, jdouble threshold, jdouble nms_threshold) {
+Java_com_dsm_mobiledetect_NanoDet_detect(JNIEnv *env, jobject thiz, jobject image, jdouble threshold, jdouble nms_threshold) {
     auto result = NanoDet::detector->detect(env, image, threshold, nms_threshold);
 
     auto box_cls = env->FindClass("com/dsm/mobiledetect/Box");
@@ -56,7 +56,7 @@ Java_com_dsm_mobiledetect_NanoDet_detect(JNIEnv *env, jclass, jobject image, jdo
                                          YOLOv4-tiny
  ********************************************************************************************/
 extern "C" JNIEXPORT void JNICALL
-Java_com_dsm_mobiledetect_YOLOv4_init(JNIEnv *env, jclass, jobject assetManager, jboolean useGPU) {
+Java_com_dsm_mobiledetect_YOLOv4_init(JNIEnv *env, jobject thiz, jobject assetManager, jboolean useGPU) {
     if (YoloV4::detector == nullptr) {
         AAssetManager *mgr = AAssetManager_fromJava(env, assetManager);
         YoloV4::detector = new YoloV4(mgr, "yolov4-tiny-opt.param", "yolov4-tiny-opt.bin", useGPU);
@@ -64,7 +64,7 @@ Java_com_dsm_mobiledetect_YOLOv4_init(JNIEnv *env, jclass, jobject assetManager,
 }
 
 extern "C" JNIEXPORT jobjectArray JNICALL
-Java_com_dsm_mobiledetect_YOLOv4_detect(JNIEnv *env, jclass, jobject image, jdouble threshold, jdouble nms_threshold) {
+Java_com_dsm_mobiledetect_YOLOv4_detect(JNIEnv *env, jobject thiz, jobject image, jdouble threshold, jdouble nms_threshold) {
     auto result = YoloV4::detector->detect(env, image, threshold, nms_threshold);
 
     auto box_cls = env->FindClass("com/dsm/mobiledetect/Box");
