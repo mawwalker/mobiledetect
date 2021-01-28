@@ -6,7 +6,7 @@
 
 ## Abstract
 
-Real-time Object Detection On Android, the implement of YOLOv4, YOLOv5 and NanoDet using NCNN. Tested on Honor V30 (Android 11).
+Real-time Object Detection On Android, the implement of YOLOv4, YOLOv5 and NanoDet using NCNN. Tested on Honor V30 (Android 10).
 
 
 
