@@ -8,7 +8,7 @@
 
 Real-time Object Detection On Android, the implement of YOLOv4, YOLOv5 and NanoDet using NCNN. Tested on Honor V30 (Android 10).
 
-
+![image](https://github.com/Dengshima/mobiledetect/blob/main/app/src/main/assets/1.jpg)![image](https://github.com/Dengshima/mobiledetect/blob/main/app/src/main/assets/2.jpg)
 
 ## Usage
 
