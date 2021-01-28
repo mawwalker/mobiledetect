@@ -24,7 +24,6 @@ android {
             ndk{
                 moduleName "detect"
                 ldLibs "log", "z", "m"
-                ndkVersion "22.0.7026061"
                 abiFilters "armeabi-v7a", "arm64-v8a"
             }
         }
